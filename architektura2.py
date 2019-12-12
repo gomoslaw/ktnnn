@@ -7,7 +7,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from glob import glob
 import datetime
 
-       
+
 
 BATCH_SIZE = 128
 EPOCH_COUNT = 50
@@ -15,7 +15,7 @@ EPOCH_COUNT = 50
 MODEL_PATH = 'model.hdf5'
 WEIGHTS_PATH = 'weights.hdf5'
 IMAGE_DEPTH = 3
-IMAGE_WIDTH =224 
+IMAGE_WIDTH =224
 IMAGE_HEIGHT = 224
 IMAGE_SHAPE = (IMAGE_DEPTH, IMAGE_HEIGHT, IMAGE_WIDTH)
 NAME = "architektura-2{}".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -30,28 +30,22 @@ model.add(Conv2D(filters = 32, kernel_size = (3, 3), activation = 'relu', input_
 model.add(ZeroPadding2D(padding = (1, 1)))
 model.add(Conv2D(filters = 32, kernel_size = (3, 3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size = (2, 2), strides=(2, 2)))
-model.add(Dropout(rate = 0.25))
+model.add(Dropout(rate = 0.2))
 
 model.add(ZeroPadding2D(padding = (1, 1)))
 model.add(Conv2D(filters = 64, kernel_size = (3, 3), activation = 'relu'))
 model.add(ZeroPadding2D(padding = (1, 1)))
 model.add(Conv2D(filters = 64, kernel_size = (3, 3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size = (2, 2), strides=(2, 2)))
-model.add(Dropout(rate = 0.25))
+model.add(Dropout(rate = 0.2))
 
 model.add(ZeroPadding2D(padding = (1, 1)))
 model.add(Conv2D(filters = 128, kernel_size = (3, 3), activation = 'relu'))
 model.add(ZeroPadding2D(padding = (1, 1)))
 model.add(Conv2D(filters = 128, kernel_size = (3, 3), activation = 'relu'))
 model.add(MaxPooling2D(pool_size = (2, 2), strides=(2, 2)))
-model.add(Dropout(rate = 0.25))
+model.add(Dropout(rate = 0.2))
 
-model.add(ZeroPadding2D(padding = (1, 1)))
-model.add(Conv2D(filters = 128, kernel_size = (3, 3), activation = 'relu'))
-model.add(ZeroPadding2D(padding = (1, 1)))
-model.add(Conv2D(filters = 128, kernel_size = (3, 3), activation = 'relu'))
-model.add(MaxPooling2D(pool_size = (2, 2), strides=(2, 2)))
-model.add(Dropout(rate = 0.25))
 
 
 model.add(Flatten())
@@ -63,8 +57,8 @@ model.summary()
 #sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
-class_names = glob("dataset/train") # Reads all the folders in which images are present
-class_names = sorted(class_names) # Sorting them
+class_names = glob("dataset/train") # czytanie zdjęć
+class_names = sorted(class_names) # sortowanie
 name_id_map = dict(zip(class_names, range(len(class_names))))
 
 train_datagen = ImageDataGenerator(

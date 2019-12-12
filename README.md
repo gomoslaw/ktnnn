@@ -4,20 +4,24 @@
 
 ## Sieci autorskie
 ### Architektura 1
+[link]
 ### Architektura 2
+[link]
 ### Architektura 3
+[link]
 ### Architektura 4
-
-
+[link]
 
 ## Sieci State-of-art
-###Zbiorczy plik treningowy
-###Pliki pomocnicze
+### Zbiorczy plik treningowy
+[link]
+### Pliki pomocnicze
+[link]
+[link]
 
-
-
-##Preprocessing obrazu
-###Pliki wykonywalne
+## Preprocessing obrazu
+## wyrównywanie i rozciąganie histogramu
+[link][link]
 
 
 
